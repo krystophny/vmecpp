@@ -1,6 +1,6 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1787511723540,
-  "repoUrl": "https://github.com/proximafusion/vmecpp",
+  "lastUpdate": 1790858654137,
+  "repoUrl": "https://github.com/krystophny/vmecpp",
   "entries": {
     "Benchmark": [
       {
@@ -12589,6 +12589,86 @@ window.BENCHMARK_DATA = {
           {
             "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_finite_difference_gradient",
             "value": 0.21470728599996391,
+            "range": "stddev: 0",
+            "unit": "seconds",
+            "extra": "rounds: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "machineelv@gmail.com",
+            "name": "CharlesCNorton",
+            "username": "CharlesCNorton"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1ff3ae985690f9ab3fd208a690d1b01cd8eecba4",
+          "message": "output_quantities: implement lbsubs full-grid B_s via radial force balance (#537)\n\n* output_quantities: implement lbsubs full-grid B_s via radial force balance\n\n* build: drop the duplicate up_down_asym filegroup and declare the absl log dependency\n\n* Rerun CI\n\n---------\n\nCo-authored-by: Philipp Jurašić <166746189+jurasic-pf@users.noreply.github.com>",
+          "timestamp": "2026-09-30T23:32:14+02:00",
+          "tree_id": "0551e01e7c2bef72a95f4016de67111155841906",
+          "url": "https://github.com/krystophny/vmecpp/commit/1ff3ae985690f9ab3fd208a690d1b01cd8eecba4"
+        },
+        "date": 1790858647274,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_cli_startup",
+            "value": 0.7784954113999902,
+            "range": "stddev: 0.014553484367067418",
+            "unit": "seconds",
+            "extra": "rounds: 5"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_w7x",
+            "value": 3.510361873333371,
+            "range": "stddev: 1.1451430121790234",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_cma",
+            "value": 1.1220142040000003,
+            "range": "stddev: 0.006647557519256315",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_cma_6x8",
+            "value": 2.2969324700000016,
+            "range": "stddev: 1.037030265126283",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_response_table_from_coils",
+            "value": 1.4811442633333627,
+            "range": "stddev: 0.007964144356581297",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_free_boundary",
+            "value": 6.8517007719999965,
+            "range": "stddev: 0.02946652090356092",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_adjoint_gradient",
+            "value": 4.593997614000045,
+            "range": "stddev: 0",
+            "unit": "seconds",
+            "extra": "rounds: 1"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_finite_difference_gradient",
+            "value": 0.5020260599999347,
             "range": "stddev: 0",
             "unit": "seconds",
             "extra": "rounds: 1"
