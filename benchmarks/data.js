@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790859066277,
+  "lastUpdate": 1791614500030,
   "repoUrl": "https://github.com/krystophny/vmecpp",
   "entries": {
     "Benchmark": [
@@ -12669,6 +12669,86 @@ window.BENCHMARK_DATA = {
           {
             "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_finite_difference_gradient",
             "value": 0.5020260599999347,
+            "range": "stddev: 0",
+            "unit": "seconds",
+            "extra": "rounds: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "machineelv@gmail.com",
+            "name": "CharlesCNorton",
+            "username": "CharlesCNorton"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7c80af256a3934b1945f7fb83600498ec14806b7",
+          "message": "Add lasym members to the exact-equilibria V&V (#968)\n\n* Add lasym members to the exact-equilibria V&V\n\n* Rewrap the _sine_series docstring so docformatter keeps it one summary",
+          "timestamp": "2026-10-08T16:49:52+02:00",
+          "tree_id": "b9c9888100ccb7b057b647acf2fd28da1b8fd507",
+          "url": "https://github.com/krystophny/vmecpp/commit/7c80af256a3934b1945f7fb83600498ec14806b7"
+        },
+        "date": 1791614492826,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_cli_startup",
+            "value": 0.6155043186000058,
+            "range": "stddev: 0.009355567789555897",
+            "unit": "seconds",
+            "extra": "rounds: 5"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_w7x",
+            "value": 3.1678819910000207,
+            "range": "stddev: 0.02106020582365644",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_cma",
+            "value": 1.125673230000037,
+            "range": "stddev: 0.001689758445634978",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_cma_6x8",
+            "value": 2.0417314970000007,
+            "range": "stddev: 0.023618185774003816",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_response_table_from_coils",
+            "value": 1.3203469406666197,
+            "range": "stddev: 0.008195362326607121",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_free_boundary",
+            "value": 6.604165578333361,
+            "range": "stddev: 0.01506996900992197",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_adjoint_gradient",
+            "value": 3.715413656999999,
+            "range": "stddev: 0",
+            "unit": "seconds",
+            "extra": "rounds: 1"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_finite_difference_gradient",
+            "value": 0.37276793400008046,
             "range": "stddev: 0",
             "unit": "seconds",
             "extra": "rounds: 1"
