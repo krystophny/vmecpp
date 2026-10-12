@@ -22,7 +22,10 @@
 #include <omp.h>
 #endif  // _OPENMP
 
+#include <Eigen/Dense>
+
 #include "absl/log/check.h"
+#include "absl/status/statusor.h"
 #include "absl/log/log.h"
 #include "absl/strings/str_cat.h"
 #include "nlohmann/json.hpp"
@@ -143,9 +146,10 @@ int main(int argc, char** argv) {
   const int mf = s.mpol + 1;  // 0 : (mpol + 1)
 
   const int mnpd = (2 * nf + 1) * (mf + 1);
-  std::vector<double> matrixShare(mnpd * mnpd);
-  std::vector<int> iPiv(mnpd);
-  std::vector<double> bvecShare(mnpd);
+  const int mnpd_dim = s.lasym ? 2 * mnpd : mnpd;
+  std::vector<double> matrixShare(mnpd_dim * mnpd_dim);
+  std::vector<double> bvecShare(mnpd_dim);
+  Eigen::PartialPivLU<Eigen::MatrixXd> lu_decomposition;
 
   // shared scratch for BIEST
   std::vector<double> coilBrShare(s.nZnT);
@@ -170,6 +174,15 @@ int main(int argc, char** argv) {
   const int ivacskip = 0;
 
 #ifdef _OPENMP
+  const int max_threads = omp_get_max_threads();
+#else
+  const int max_threads = 1;
+#endif  // _OPENMP
+  // per-thread slots of Nestor's tangential reductions
+  std::vector<double> reduce_slots(static_cast<size_t>(max_threads) *
+                                   matrixShare.size());
+
+#ifdef _OPENMP
   const int num_threads = omp_get_max_threads();
 #pragma omp parallel
   {
@@ -186,8 +199,9 @@ int main(int argc, char** argv) {
     if (vmec_indata.free_boundary_method ==
         vmecpp::FreeBoundaryMethod::NESTOR) {
       solver = std::make_unique<vmecpp::Nestor>(
-          &s, &tp, &mgrid, matrixShare, bvecShare, bSqVacShare, iPiv,
-          vacuum_b_r, vacuum_b_phi, vacuum_b_z);
+          &s, &tp, &mgrid, matrixShare, bvecShare, bSqVacShare,
+          &lu_decomposition, vacuum_b_r, vacuum_b_phi, vacuum_b_z,
+          reduce_slots);
     } else if (vmec_indata.free_boundary_method ==
                vmecpp::FreeBoundaryMethod::BIEST) {
       solver = std::make_unique<vmecpp::Biest>(
@@ -202,10 +216,11 @@ int main(int argc, char** argv) {
     // NOTE: accumulation into `net_toroidal_current_from_solution` and
     // `net_poloidal_current_from_solution` by only a single thread is
     // already handled within the solver's `update()`.
-    solver->update(rCC, rSS, rSC, rCS, zSC, zCS, zCC, zSS, kSignOfJacobian,
-                   axis_r, axis_z, &net_toroidal_current_from_solution,
-                   &net_poloidal_current_from_solution, vmec_indata.curtor,
-                   ivacskip);
+    const absl::StatusOr<bool> rc = solver->update(
+        rCC, rSS, rSC, rCS, zSC, zCS, zCC, zSS, kSignOfJacobian, axis_r,
+        axis_z, &net_toroidal_current_from_solution,
+        &net_poloidal_current_from_solution, vmec_indata.curtor, ivacskip);
+    CHECK_OK(rc);
     // at this point we expect to have the full solution in bSqVacShare
   }  // pragma omp parallel
 
