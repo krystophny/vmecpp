@@ -9,6 +9,7 @@ from typing import Any, Literal, Union
 import jaxtyping as jt
 import numpy as np
 import pydantic
+from typing_extensions import TypeForm
 
 try:
     import dapper  # pyright: ignore[reportMissingImports]
@@ -278,7 +279,7 @@ def _deserialize_value(
 
 
 def _traverse_field_contents(
-    field_type: type,
+    field_type: TypeForm[Any],
     value: Any,
     value_converter: Callable[[type, Any, list[Any]], Any],
     field_metadata: list[Any],
@@ -302,6 +303,9 @@ def _traverse_field_contents(
     # containers that are known to not contain special values (e.g. list[float]).
     # Simple type.
     if outer_type is None:
+        if not isinstance(field_type, type):
+            msg = f"Expected a class for a non-generic field, got {field_type!r}."
+            raise TypeError(msg)
         return value_converter(field_type, value, field_metadata)
 
     # Annotated types are a special case, since they can be used to add metadata

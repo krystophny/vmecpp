@@ -33,6 +33,7 @@ dependencies = [
   "numpy",
   "scipy",
   "pydantic>=2.11", # Introduced support for by_alias validation
+  "typing_extensions>=4.13", # TypeForm represents field annotations
   "jaxtyping>=0.2.6",
   "jax!=0.5.2", # To prevent a circular import bug in jax on arch Linux
   "jax!=0.5.1", # To prevent a circular import bug in jax on arch Linux
