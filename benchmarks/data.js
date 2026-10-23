@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791614895500,
+  "lastUpdate": 1792786065488,
   "repoUrl": "https://github.com/krystophny/vmecpp",
   "entries": {
     "Benchmark": [
@@ -12749,6 +12749,86 @@ window.BENCHMARK_DATA = {
           {
             "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_finite_difference_gradient",
             "value": 0.37276793400008046,
+            "range": "stddev: 0",
+            "unit": "seconds",
+            "extra": "rounds: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "albert@tugraz.at",
+            "name": "Christopher Albert",
+            "username": "krystophny"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "cc357dc63158452e0b60e456acd65efbe6dc2681",
+          "message": "Restore Python CI and isolate bundled HDF5 headers (#2)\n\n* Install native netCDF headers for Python CI source builds\n\n* Accept Pydantic type forms in field traversal\n\n* Keep bundled netCDF headers isolated from optional system filters",
+          "timestamp": "2026-10-23T22:00:46+02:00",
+          "tree_id": "930f51fda5de8716a8e25d23974f0d8ac036d545",
+          "url": "https://github.com/krystophny/vmecpp/commit/cc357dc63158452e0b60e456acd65efbe6dc2681"
+        },
+        "date": 1792786061417,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_cli_startup",
+            "value": 0.6509143294000068,
+            "range": "stddev: 0.0042294627362714",
+            "unit": "seconds",
+            "extra": "rounds: 5"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_w7x",
+            "value": 2.5790355753333265,
+            "range": "stddev: 0.014291238112303073",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_cma",
+            "value": 1.096358376000012,
+            "range": "stddev: 0.004310678446055973",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_fixed_boundary_cma_6x8",
+            "value": 1.6579492383333445,
+            "range": "stddev: 0.01660820333351169",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_response_table_from_coils",
+            "value": 1.4837192890000022,
+            "range": "stddev: 0.01168060915441132",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_free_boundary",
+            "value": 6.773497020666696,
+            "range": "stddev: 0.015052421153439108",
+            "unit": "seconds",
+            "extra": "rounds: 3"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_adjoint_gradient",
+            "value": 2.707713891000026,
+            "range": "stddev: 0",
+            "unit": "seconds",
+            "extra": "rounds: 1"
+          },
+          {
+            "name": "benchmarks/test_benchmarks.py::test_bench_simsopt_finite_difference_gradient",
+            "value": 0.47833382599992547,
             "range": "stddev: 0",
             "unit": "seconds",
             "extra": "rounds: 1"
